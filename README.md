@@ -1,2 +1,6 @@
 # NLW3-Trilha-OmniStack
  Next Level Week - 3ª Edição - Happy - Leve felicidade para o mundo
+
+<img alt="Happy" title="Happy" src="https://repository-images.githubusercontent.com/304070417/7684f000-0e23-11eb-9b41-6cebf2eb97e7" style="max-width:100%;">
+
+<img alt="NLW#3" title="NLW#3" src="https://user-images.githubusercontent.com/11990151/96021105-5d7d3e80-0e25-11eb-8c97-e5e32c53e76c.png">
