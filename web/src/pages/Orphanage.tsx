@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+  import React, { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo, FiExternalLink, FiMail } from "react-icons/fi";
 import { Map, Marker, TileLayer } from "react-leaflet";
@@ -73,7 +73,9 @@ export default function Orphanage() {
                         setActiveImageIndex(index)
                       }}
                     >
+
                       <img src={image.url} alt={orphanage.name} />
+
                     </button>
                   )
                 })}
@@ -141,18 +143,20 @@ export default function Orphanage() {
               ) }
             </div>
 
-            <a 
-              className="contact-button"
-              href={whatsappfy(orphanage.phone1)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaWhatsapp size={20} color="#FFF" />
-              Entrar em contato
-            </a>
+            { orphanage.phone1.trim() && (
+              <a 
+                className="contact-button"
+                href={whatsappfy(orphanage.phone1)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp size={20} color="#FFF" />
+                Entrar em contato
+              </a>
+            ) }
 
             <footer className="website">
-              { orphanage.email && (
+              { orphanage.email.trim() && (
                 <a 
                   href={`mailto:${orphanage.email}`}
                   title={orphanage.email}
@@ -162,7 +166,7 @@ export default function Orphanage() {
                 </a>
               ) }
 
-              { orphanage.website && (
+              { orphanage.website.trim() && (
                 <a 
                   href={orphanage.website}
                   title={orphanage.website}
