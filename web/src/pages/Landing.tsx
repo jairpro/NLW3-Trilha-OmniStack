@@ -3,6 +3,7 @@ import { FiArrowRight } from 'react-icons/fi'
 import { Link } from "react-router-dom";
 
 import '../styles/pages/landing.css'
+import { localidade, regiao } from '../local.json'
 
 import logoImg from '../images/logo.svg'
 
@@ -18,8 +19,8 @@ function Landing() {
         </main>
 
         <div className="location">
-          <strong>Mesorregião Metropolitana<br/>de Porto Alegre</strong>
-          <span>RS, Brasil</span>
+          <strong>{`${localidade}`}</strong>
+          <span>{`${regiao}`}</span>
         </div>
 
         <Link to="/app" className="enter-app">

@@ -1,6 +1,10 @@
+// TODO: Isto não ajudou a process ser acessível em ./services/api.ts
+//import 'dotenv/config'
+
 import React from 'react'
 
 import './styles/global.css'
+import 'leaflet/dist/leaflet.css'
 
 import Routes from './routes'
 

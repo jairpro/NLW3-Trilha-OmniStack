@@ -1,21 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiPlus, FiArrowRight } from 'react-icons/fi'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import Leaftlet from 'leaflet'
-
-import 'leaflet/dist/leaflet.css'
 
 import '../styles/pages/orphanages-map.css'
 
-import mapMarkerImg from '../images/map-marker.svg'
+import { localidade, regiao, latitude, longitude, zoom } from '../local.json'
 
-const mapIcon =Leaftlet.icon({
-  iconUrl: mapMarkerImg,
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [170, 2],
-})
+import mapMarkerImg from '../images/map-marker.svg'
+import mapIcon from '../utils/mapIcon'
+import api from '../services/api'
 
 const maps = [
   'openstreetmap',
@@ -36,10 +30,27 @@ const mapboxStyles = [
   'navigation-guidance-night-v4',
 ]
 
-let map = maps[0];
-let mapboxStyle = mapboxStyles[2];
+let map = maps[1]
+let mapboxStyle = mapboxStyles[4]
+
+interface Orphanage {
+  id: number
+  latitude: number
+  longitude: number
+  name: string
+}
 
 function OrphanegesMap() {
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([])
+
+  console.log(orphanages)
+  
+  useEffect(() => {
+    api.get('orphanages').then(response => {
+      setOrphanages(response.data)
+    })
+  }, [])
+
   return (
     <div id="page-map">
       <aside>
@@ -51,14 +62,14 @@ function OrphanegesMap() {
         </header>
 
         <footer>
-          <strong>Gravataí</strong>
-          <span>Rio Grande do Sul</span>
+          <strong>{`${localidade}`}</strong>
+          <span>{`${regiao}`}</span>
         </footer>
       </aside>
 
       <Map 
-        center={[-29.8647552,-50.839552]}
-        zoom={13}
+        center={[latitude, longitude]}
+        zoom={zoom}
         style={{ width: '100%', height: '100%' }}
       >
         <TileLayer url={map==='openstreetmap' 
@@ -66,20 +77,25 @@ function OrphanegesMap() {
             : `https://api.mapbox.com/styles/v1/mapbox/${mapboxStyle}/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`
         } />
 
-        <Marker 
-          icon={mapIcon}
-          position={[-29.8647552,-50.839552]}
-        >
-          <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-            Lar das meninas
-            <Link to="">
-              <FiArrowRight size={20} color="#FFF"/>
-            </Link>
-          </Popup>
-        </Marker>
+        {orphanages.map(orphanage => {
+          return (
+            <Marker
+              key={orphanage.id} 
+              icon={mapIcon}
+              position={[orphanage.latitude, orphanage.longitude]}
+            >
+              <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
+                {orphanage.name}
+                <Link to={`orphanages/${orphanage.id}`}>
+                  <FiArrowRight size={20} color="#FFF"/>
+                </Link>
+              </Popup>
+            </Marker>
+          )
+        })}
       </Map>
 
-      <Link to="" className="create-orphanage">
+      <Link to="orphanages/create" className="create-orphanage">
         <FiPlus size={32} color="#FFF" />
       </Link>
     </div>

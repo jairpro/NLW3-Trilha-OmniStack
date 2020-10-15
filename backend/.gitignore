@@ -1,4 +1,5 @@
 /node_modules
 /src/database/database.sqlite
+/src/database/database.bkp.sqlite
 /uploads
 .env
