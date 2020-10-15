@@ -24,6 +24,7 @@ interface Orphanage {
   website: string
   email: string
   images: Array<{
+    id: number
     url: string
   }>
 }
@@ -35,16 +36,13 @@ interface OrphanageParams {
 export default function Orphanage() {
   const params = useParams<OrphanageParams>()
   const [orphanage, setOrphanage] = useState<Orphanage>()
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
 
   //console.log(orphanages)
   
   useEffect(() => {
     api.get(`orphanages/${params.id}`).then(response => {
-      const data = response.data;
-      if (data.images.length===0) {
-        data.images = [{ url: ''}]
-      }
-      setOrphanage(data)
+      setOrphanage(response.data)
     })
   }, [params.id])
 
@@ -58,28 +56,32 @@ export default function Orphanage() {
 
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.images[0].url} alt={orphanage.name} />
+          { orphanage.images.length>0 && (
+            <>
+              <img src={orphanage.images[activeImageIndex].url} alt={orphanage.name} />
 
-          <div className="images">
-            <button className="active" type="button">
-              <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-            </button>
-            <button type="button">
-              <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-            </button>
-            <button type="button">
-              <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-            </button>
-            <button type="button">
-              <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-            </button>
-            <button type="button">
-              <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-            </button>
-            <button type="button">
-              <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-            </button>
-          </div>
+              { orphanage.images.length>1 && (
+                <div className="images">
+
+                {orphanage.images.map((image, index) => {
+                  return (
+                    <button 
+                      key={image.id}  
+                      className={activeImageIndex===index ? "active" : ""}
+                      type="button"
+                      onClick={() => {
+                        setActiveImageIndex(index)
+                      }}
+                    >
+                      <img src={image.url} alt={orphanage.name} />
+                    </button>
+                  )
+                })}
+
+              </div>
+            ) }
+            </>
+          ) }
           
           <div className="orphanage-details-content">
             <h1>{orphanage.name}</h1>
@@ -103,7 +105,13 @@ export default function Orphanage() {
               </Map>
 
               <footer>
-                <a href="">Ver rotas no Google Maps</a>
+                <a
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver rotas no Google Maps
+                </a>
               </footer>
             </div>
 
@@ -136,6 +144,8 @@ export default function Orphanage() {
             <a 
               className="contact-button"
               href={whatsappfy(orphanage.phone1)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaWhatsapp size={20} color="#FFF" />
               Entrar em contato
@@ -157,6 +167,7 @@ export default function Orphanage() {
                   href={orphanage.website}
                   title={orphanage.website}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <FiExternalLink size={32} color="#5C8599" />
                   Website
