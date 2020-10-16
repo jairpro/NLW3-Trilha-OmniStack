@@ -3,7 +3,7 @@ import { FiArrowRight } from 'react-icons/fi'
 import { Link } from "react-router-dom";
 
 import '../styles/pages/landing.css'
-import { localidade, regiao } from '../local.json'
+import { localidade, regiao } from '../config/local.json'
 
 import logoImg from '../images/logo.svg'
 

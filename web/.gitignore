@@ -1,3 +1,6 @@
 /node_modules
 /build
 .env
+/src/config/local.json
+/src/config/api.json
+/deploy.config

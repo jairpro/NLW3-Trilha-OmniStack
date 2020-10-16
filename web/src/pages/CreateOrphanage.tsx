@@ -8,7 +8,7 @@ import { FiPlus } from "react-icons/fi";
 import mapIcon from "../utils/mapIcon";
 import Sidebar from "../components/Sidebar";
 import api from '../services/api'
-import { latitude as localLatitude, longitude as localLongitude, zoom as localZoom } from '../local.json'
+import { latitude as localLatitude, longitude as localLongitude, zoom as localZoom } from '../config/local.json'
 
 import '../styles/pages/create-orphanage.css';
 

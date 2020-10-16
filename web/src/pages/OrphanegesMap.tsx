@@ -5,7 +5,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
 import '../styles/pages/orphanages-map.css'
 
-import { localidade, regiao, latitude, longitude, zoom } from '../local.json'
+import { localidade, regiao, latitude, longitude, zoom } from '../config/local.json'
 
 import mapMarkerImg from '../images/map-marker.svg'
 import mapIcon from '../utils/mapIcon'
