@@ -3,3 +3,4 @@
 /src/database/database.bkp.sqlite
 /uploads
 .env
+/env

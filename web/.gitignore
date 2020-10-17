@@ -4,3 +4,5 @@
 /src/config/local.json
 /src/config/api.json
 /deploy.config
+debug.log
+

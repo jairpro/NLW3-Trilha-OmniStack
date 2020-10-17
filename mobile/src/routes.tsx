@@ -18,7 +18,7 @@ export default function Rotes() {
       <Navigator screenOptions={{ headerShown: false, cardStyle: { backgroundColor: '#f2f3f5' } }}>
         <Screen 
           name="OrphanagesMap" 
-          component={OrphanagesMap} 
+          component={OrphanagesMap}
         />
 
         <Screen 
