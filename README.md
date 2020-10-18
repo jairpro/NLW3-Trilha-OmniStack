@@ -17,3 +17,7 @@
 [Mapbox - Themes](https://docs.mapbox.com/mapbox-gl-js/api/map/)
 [TypeORM](https://typeorm.io/)
 [Beekeeper Studio](https://github.com/beekeeper-studio/beekeeper-studio)
+
+## Ambiente
+Guia para configuração do ambiente de desenvolvimento
+https://www.notion.so/Configurando-o-ambiente-953aad022cda4fbcb149be2bfe793995
