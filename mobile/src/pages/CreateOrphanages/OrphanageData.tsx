@@ -20,7 +20,7 @@ export default function OrphanageData() {
   const [instructions, setInstructions] = useState('')
   const [opening_hours, setOpeningHours] = useState('')
   const [opened_on_weekends, setOpenedOnWeekends] = useState(true)
-  const [images, setImages] = useState<String[]>([])
+  const [images, setImages] = useState<string[]>([])
   
   const navigation = useNavigation()
   const route = useRoute()
@@ -143,11 +143,7 @@ export default function OrphanageData() {
       <View style={styles.uploadedImagesContainer}>
         {images.map(image => {
           return (
-            <Image
-              key={image}
-              source={{ uri: image }}
-              style={styles.uploadedImage}
-            />
+            <Image key={image} source={{ uri: image }} style={styles.uploadedImage} />
           )
         })}
       </View>
