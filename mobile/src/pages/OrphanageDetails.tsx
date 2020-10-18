@@ -10,7 +10,6 @@ import { useRoute } from '@react-navigation/native'
 import api from '../services/api';
 
 import { latitudeDelta, longitudeDelta } from '../../local.json'
-import { API_URL } from '../../env.json'
 
 interface OrphanageDetailsRouteParams {
   id: number
@@ -65,7 +64,6 @@ export default function Orphanage() {
       <View style={styles.imagesContainer}>
         <ScrollView horizontal pagingEnabled>
           { orphanage.images.map(image => {
-              //const uri = API_URL + '/' + image.url.split('/').slice(3).join('/')
               const uri = image.url
 
               return (
