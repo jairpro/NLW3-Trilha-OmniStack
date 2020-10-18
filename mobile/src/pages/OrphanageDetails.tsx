@@ -35,7 +35,6 @@ interface OrphanageDetails {
 }
 
 export default function Orphanage() {
-  
   const route = useRoute()
 
   const [orphanage, setOrphanage] = useState<OrphanageDetails>()
