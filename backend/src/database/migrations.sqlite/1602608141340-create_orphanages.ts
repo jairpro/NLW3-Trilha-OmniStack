@@ -19,11 +19,15 @@ export class createOrphanages1602608141340 implements MigrationInterface {
         },
         {
           name: 'latitude',
-          type: 'varchar',
+          type: 'decimal',
+          scale: 10,
+          precision: 2,
         },
         {
           name: 'longitude',
-          type: 'varchar',
+          type: 'decimal',
+          scale: 10,
+          precision: 2,
         },
         {
           name: 'about',
@@ -45,12 +49,10 @@ export class createOrphanages1602608141340 implements MigrationInterface {
         {
           name: 'website',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'email',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'phone1',
@@ -59,58 +61,47 @@ export class createOrphanages1602608141340 implements MigrationInterface {
         {
           name: 'phone2',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'street',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'number',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'district',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'city',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'state',
-          type: 'char',
-          length: '2',
-          isNullable: true,
+          type: 'character',
+          precision: 2,
         },
         {
           name: 'zip_code',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'bank',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'agency',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'account',
           type: 'varchar',
-          isNullable: true,
         },
         {
           name: 'entity_register',
           type: 'varchar',
-          isNullable: true,
         },
       ]
     }))

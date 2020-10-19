@@ -5,14 +5,15 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "deploy:server": "env-cmd -f ./.env -x pm2 start ./server.sh --name \\$PM2_NAME_SERVER"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "multer": "^1.4.2",
-    "sqlite3": "^5.0.0",
+    "pg": "^8.4.1",
     "typeorm": "^0.2.28",
     "yup": "^0.29.3"
   },

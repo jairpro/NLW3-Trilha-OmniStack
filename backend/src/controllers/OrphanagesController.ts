@@ -98,20 +98,20 @@ export default {
           path: Yup.string().required()
         })
       ),
-      website: Yup.string().required(),
-      email: Yup.string().required(),
+      website: Yup.string(),
+      email: Yup.string(),
       phone1: Yup.string().required(),
-      phone2: Yup.string().required(),
-      street: Yup.string().required(),
-      number: Yup.string().required(),
-      district: Yup.string().required(),
-      city: Yup.string().required(),
-      state: Yup.string().length(2).required(),
-      zip_code: Yup.string().required(),
-      bank: Yup.string().required(),
-      agency: Yup.string().required(),
-      account: Yup.string().required(),
-      entity_register: Yup.string().required(),
+      phone2: Yup.string(),
+      street: Yup.string(),
+      number: Yup.string(),
+      district: Yup.string(),
+      city: Yup.string(),
+      state: Yup.string().length(2),
+      zip_code: Yup.string(),
+      bank: Yup.string(),
+      agency: Yup.string(),
+      account: Yup.string(),
+      entity_register: Yup.string(),
     })
 
     await schema.validate(data, {
